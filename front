@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+
+$simple_arg = $ARGV[0];
+
+$_ = $simple_arg;
+s/(^..).*/$1/;
+
+if ($_ eq '-n') {
+	$num_chars = $ARGV[1]; # Assumes $ARGV[0] was '-n'.
+}
+
+# A desirable thing to add would be opening a file
+# rather than being limited to STDIN.
+
+foreach (<STDIN>) {
+	s/(^.{$num_chars}).*/$1/;
+	print $_;
+}
+
